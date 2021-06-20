@@ -1,7 +1,7 @@
+
 #----------------------------------------------------------------------------#
 # Imports
 #----------------------------------------------------------------------------#
-#test
 import json
 import dateutil.parser
 import babel
@@ -12,23 +12,86 @@ import logging
 from logging import Formatter, FileHandler
 from flask_wtf import Form
 from forms import *
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
+from sqlalchemy import select
+import decimal, datetime
+from flask.json import JSONEncoder
+from contextlib import suppress
+import psycopg2
+from psycopg2 import sql
+import os
+
 #----------------------------------------------------------------------------#
 # App Config.
 #----------------------------------------------------------------------------#
 
+# TODO: connect to a local postgresql database
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = os.urandom(32)
 moment = Moment(app)
-app.config.from_object('config')
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:Theoilers1#@localhost:5432/rickdb"
+
+#app.config.from_object('config.DevelopmentConfig')
 db = SQLAlchemy(app)
 
-# TODO: connect to a local postgresql database
+engine = create_engine('postgresql://postgres:Theoilers1#@localhost:5432/rickdb')
+
+Session = sessionmaker(engine)
+session = Session()
+
+conn2 = psycopg2.connect("dbname=rickdb user=postgres password=Theoilers1#")
+cur = conn2.cursor()
 
 #----------------------------------------------------------------------------#
 # Models.
 #----------------------------------------------------------------------------#
+from sqlalchemy.inspection import inspect
+
+class ModelMixin:
+    """Provide dict-like interface to db.Model subclasses."""
+
+    def __getitem__(self, key):
+        """Expose object attributes like dict values."""
+        return getattr(self, key)
+
+    def keys(self):
+        """Identify what db columns we have."""
+        return inspect(self).attrs.keys()
+
+def to_json(inst, cls):
+    """
+    Jsonify the sql alchemy query result.
+    """
+    convert = dict()
+    # add your coversions for things like datetime's 
+    # and what-not that aren't serializable.
+    d = dict()
+    for c in cls.__table__.columns:
+        v = getattr(inst, c.name)
+        if c.type in convert.keys() and v is not None:
+            try:
+                d[c.name] = convert[c.type](v)
+            except:
+                d[c.name] = "Error:  Failed to covert using ", str(convert[c.type])
+        elif v is None:
+            d[c.name] = str()
+        else:
+            d[c.name] = v
+    return json.dumps(d)
+
+class MyJSONEncoder(JSONEncoder):
+    def default(self, obj):
+        # Optional: convert datetime objects to ISO format
+        with suppress(AttributeError):
+            return obj.isoformat()
+        return dict(obj)
+
+app.json_encoder = MyJSONEncoder
 
 class Venue(db.Model):
-    __tablename__ = 'Venue'
+    __tablename__ = 'venue'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
@@ -38,11 +101,12 @@ class Venue(db.Model):
     phone = db.Column(db.String(120))
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
+    #shows = db.relationship('shows', backref='venue', lazy=True)
 
-    # TODO: implement any missing fields, as a database migration using Flask-Migrate
+    # TODO: implement any missing fields as a database migration using Flask-Migrate
 
-class Artist(db.Model):
-    __tablename__ = 'Artist'
+class Artist(db.Model, ModelMixin):
+    __tablename__ = 'artist'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
@@ -52,6 +116,19 @@ class Artist(db.Model):
     genres = db.Column(db.String(120))
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
+
+    @property
+    def json(self):
+        return to_json(self, self.__class__)
+
+class Shows(db.Model):
+    __tablename__ = 'shows'
+
+    id = db.Column(db.Integer, primary_key=True)
+    show_date = db.Column(db.String(120))
+    show_time = db.Column(db.String(120))
+    venue_id = db.Column(db.Integer, db.ForeignKey('venue.id'), nullable=False)
+
 
     # TODO: implement any missing fields, as a database migration using Flask-Migrate
 
@@ -108,7 +185,17 @@ def venues():
       "num_upcoming_shows": 0,
     }]
   }]
-  return render_template('pages/venues.html', areas=data);
+  
+  print("Venue tabel: {}".format(select(Venue)))
+
+  cur.execute("SELECT json_build_object('city', v2.city, 'state', v2.state, 'venues', json_agg(Vens)) FROM venue v2 LEFT JOIN (SELECT v.id id, v.name, coalesce(COUNT(s.id), 0) upcoming FROM venue v LEFT JOIN shows s ON v.id = s.venue_id GROUP by v.id, v.name) as Vens on v2.id = Vens.id GROUP BY v2.city, v2.state")
+  
+  rv = cur.fetchall()
+  json_data=[]
+  for result in rv:
+    json_data.append(result[0])
+  
+  return render_template('pages/venues.html', areas=json_data);
 
 @app.route('/venues/search', methods=['POST'])
 def search_venues():
@@ -123,6 +210,19 @@ def search_venues():
       "num_upcoming_shows": 0,
     }]
   }
+
+  search_str = "%" + request.form['search_term'] +"%"
+  sql_stmt = "SELECT json_build_object('id', v.id, 'name', v.name, 'num_upcoming_shows', coalesce(COUNT(s.id), 0)) FROM venue v LEFT JOIN shows s ON v.id = s.venue_id WHERE LOWER(v.name) LIKE LOWER(%s) GROUP by v.id, v.name"
+  cur.execute(sql_stmt, (search_str,))
+  
+  json_data=[]
+  search_cnt=0
+  for result in cur.fetchall():
+    json_data.append(result[0])
+    search_cnt += 1
+
+  response = {'count': search_cnt, 'data': json_data}
+  
   return render_template('pages/search_venues.html', results=response, search_term=request.form.get('search_term', ''))
 
 @app.route('/venues/<int:venue_id>')
@@ -173,7 +273,7 @@ def show_venue(venue_id):
     "id": 3,
     "name": "Park Square Live Music & Coffee",
     "genres": ["Rock n Roll", "Jazz", "Classical", "Folk"],
-    "address": "34 Whiskey Moore Ave",
+    "address": "34 Whiskey Moore jasAve",
     "city": "San Francisco",
     "state": "CA",
     "phone": "415-000-1234",
@@ -206,8 +306,13 @@ def show_venue(venue_id):
     "past_shows_count": 1,
     "upcoming_shows_count": 1,
   }
-  data = list(filter(lambda d: d['id'] == venue_id, [data1, data2, data3]))[0]
-  return render_template('pages/show_venue.html', venue=data)
+  #data = list(filter(lambda d: d['id'] == venue_id, [data1, data2, data3]))[0]
+
+  sql_stmt = "SELECT json_build_object('id', v.id, 'name', v.name) FROM venue v WHERE v.id = %s"
+  cur.execute(sql_stmt, (venue_id,))
+  
+  rv = cur.fetchall()
+  return render_template('pages/show_venue.html', venue=rv[0][0])
 
 #  Create Venue
 #  ----------------------------------------------------------------
@@ -222,6 +327,19 @@ def create_venue_submission():
   # TODO: insert form data as a new Venue record in the db, instead
   # TODO: modify data to be the data object returned from db insertion
 
+  #id = db.Column(db.Integer, primary_key=True)
+  #name = db.Column(db.String)
+  #city = db.Column(db.String(120))
+  #state = db.Column(db.String(120))
+  #address = db.Column(db.String(120))
+  #phone = db.Column(db.String(120))
+  #image_link = db.Column(db.String(500))
+  #facebook_link = db.Column(db.String(120))
+  newvenue = Venue(name=request.form['name'], city="Honey Creek", state="IA")
+  session.add(newvenue)
+  session.commit()
+
+  
   # on successful db insert, flash success
   flash('Venue ' + request.form['name'] + ' was successfully listed!')
   # TODO: on unsuccessful db insert, flash an error instead.
@@ -233,6 +351,10 @@ def create_venue_submission():
 def delete_venue(venue_id):
   # TODO: Complete this endpoint for taking a venue_id, and using
   # SQLAlchemy ORM to delete a record. Handle cases where the session commit could fail.
+
+  #removevenue = Venue(name=request.form['name'], city="Honey Creek", state="IA")
+  #session.delete(newvenue)
+  #session.commit()
 
   # BONUS CHALLENGE: Implement a button to delete a Venue on a Venue Page, have it so that
   # clicking that button delete it from the db then redirect the user to the homepage
@@ -296,6 +418,13 @@ def show_artist(artist_id):
     "past_shows_count": 1,
     "upcoming_shows_count": 0,
   }
+
+  print("data1 before: {} ".format(data1))
+
+  data1["genres"] = ["Swing", "Folk"]
+
+  print("data1 after: {}".format(data1))
+  
   data2={
     "id": 5,
     "name": "Matt Quevedo",
