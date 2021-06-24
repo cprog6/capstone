@@ -3738,3 +3738,288 @@ TypeError: 'NoneType' object is not iterable
 2021-06-20 09:10:43,105 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:632]
 2021-06-20 09:38:29,363 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:632]
 2021-06-20 09:39:32,831 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:632]
+2021-06-23 09:53:47,039 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:630]
+2021-06-23 09:54:39,532 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:630]
+2021-06-23 09:55:15,078 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:630]
+2021-06-23 09:57:02,062 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:630]
+2021-06-23 10:00:37,967 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:630]
+2021-06-23 10:00:56,561 ERROR: Exception on /venues/create [POST] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 330, in create_venue_submission
+    print("venue from html: {}".format(form.genres.data))
+NameError: name 'form' is not defined
+2021-06-23 10:12:51,580 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:630]
+2021-06-23 10:13:18,591 ERROR: Exception on /venues/create [POST] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 330, in create_venue_submission
+    print("venue from html: {}".format(request.form.getlist['genres']))
+TypeError: 'method' object is not subscriptable
+2021-06-23 10:14:45,938 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:631]
+2021-06-23 10:22:23,861 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:632]
+2021-06-23 10:23:44,613 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:632]
+2021-06-23 10:24:40,972 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:630]
+2021-06-23 10:24:53,842 ERROR: Exception on /venues/create [POST] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 332, in create_venue_submission
+    newvenue = Venue(name=request.form('name'), city="Honey Creek", state="IA", genres=request.form.getlist('genres'))
+TypeError: 'ImmutableMultiDict' object is not callable
+2021-06-23 10:25:22,529 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:630]
+2021-06-23 10:29:11,093 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:632]
+2021-06-23 10:30:15,187 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:632]
+2021-06-23 10:31:02,048 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:632]
+2021-06-23 10:32:08,510 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:632]
+2021-06-23 10:36:09,140 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:632]
+2021-06-23 10:37:08,212 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:632]
+2021-06-23 10:40:42,497 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:633]
+2021-06-23 10:44:27,937 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:633]
+2021-06-23 10:44:46,288 ERROR: Exception on /venues/create [POST] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 333, in create_venue_submission
+    print('website_link: {}'.format(request.form('website_link')))
+TypeError: 'ImmutableMultiDict' object is not callable
+2021-06-23 10:45:09,893 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:633]
+2021-06-23 10:46:57,936 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:633]
+2021-06-23 10:47:13,721 ERROR: Exception on /venues/create [POST] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\base.py", line 1670, in _execute_context
+    context = constructor(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\default.py", line 1073, in _init_compiled
+    param = {
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\default.py", line 1074, in <dictcomp>
+    key: processors[key](compiled_params[key])
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\sql\sqltypes.py", line 1969, in process
+    value = _strict_as_bool(value)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\sql\sqltypes.py", line 1944, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % value)
+TypeError: Not a boolean value: 'y'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 337, in create_venue_submission
+    session.commit()
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 829, in commit
+    self._prepare_impl()
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 3286, in flush
+    self._flush(objects)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 3426, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 3386, in _flush
+    flush_context.execute()
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\persistence.py", line 242, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\persistence.py", line 1219, in _emit_insert_statements
+    result = connection._execute_20(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\base.py", line 1582, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\sql\elements.py", line 324, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\base.py", line 1451, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\base.py", line 1676, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\base.py", line 1994, in _handle_dbapi_exception
+    util.raise_(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\base.py", line 1670, in _execute_context
+    context = constructor(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\default.py", line 1073, in _init_compiled
+    param = {
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\default.py", line 1074, in <dictcomp>
+    key: processors[key](compiled_params[key])
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\sql\sqltypes.py", line 1969, in process
+    value = _strict_as_bool(value)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\sql\sqltypes.py", line 1944, in _strict_as_bool
+    raise TypeError("Not a boolean value: %r" % value)
+sqlalchemy.exc.StatementError: (builtins.TypeError) Not a boolean value: 'y'
+[SQL: INSERT INTO venue (name, city, state, address, phone, genres, image_link, facebook_link, website_link, seeking_talent) VALUES (%(name)s, %(city)s, %(state)s, %(address)s, %(phone)s, %(genres)s, %(image_link)s, %(facebook_link)s, %(website_link)s, %(seeking_talent)s) RETURNING venue.id]
+[parameters: [{'seeking_talent': 'y', 'name': 'Richard Snyder', 'city': 'Honey Creek', 'website_link': 'https://www.themusicalhop.com', 'genres': ['Blues'], 'state': 'IA', 'image_link': None, 'facebook_link': None, 'phone': None, 'address': None}]]
+2021-06-23 10:48:35,406 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:633]
+2021-06-23 10:51:13,912 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:637]
+2021-06-23 10:51:32,650 ERROR: Exception on /venues/create [POST] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 333, in create_venue_submission
+    seek_talent = false
+NameError: name 'false' is not defined
+2021-06-23 10:52:40,042 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:637]
+2021-06-23 10:53:09,360 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:637]
+2021-06-23 10:53:43,946 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:637]
+2021-06-23 10:56:39,690 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:637]
+2021-06-23 10:57:47,718 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:637]
+2021-06-23 10:59:04,616 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:637]
+2021-06-23 11:00:30,411 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:637]
+2021-06-23 11:01:19,111 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:637]
+2021-06-23 11:02:10,121 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:637]
+2021-06-23 11:02:39,769 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:637]
+2021-06-23 11:08:59,893 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:638]
+2021-06-23 11:11:44,872 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:638]
+2021-06-23 11:14:24,764 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:638]
+2021-06-23 11:15:53,403 ERROR: Exception on /venues/create [POST] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 333, in create_venue_submission
+    seek_talent = form.seeking_talent.data
+NameError: name 'form' is not defined
+2021-06-23 11:24:22,093 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:638]
+2021-06-23 11:24:37,161 ERROR: Exception on /venues/create [POST] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 333, in create_venue_submission
+    seek_talent = request.form.get['seeking_talent']
+TypeError: 'method' object is not subscriptable
+2021-06-23 11:25:04,008 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:638]
+2021-06-23 11:25:11,398 ERROR: Exception on /venues/create [POST] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 333, in create_venue_submission
+    seek_talent = request.form.get['seeking_talent']
+TypeError: 'method' object is not subscriptable
+2021-06-23 11:44:04,425 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:638]
+2021-06-23 11:44:12,407 ERROR: Exception on /venues/create [POST] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 333, in create_venue_submission
+    seek_talent = request.form.get['seeking_talent']
+TypeError: 'method' object is not subscriptable
+2021-06-23 11:44:37,979 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:638]
+2021-06-23 11:56:02,234 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:638]
+2021-06-23 11:56:12,335 ERROR: Exception on /venues/create [POST] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 340, in create_venue_submission
+    newvenue = Venue(name=request.form['name'], city="Honey Creek", state="IA", genres=request.form.getlist('genres'), website_link=request.form['website_link'], seeking_talent=seek_talent)
+  File "<string>", line 4, in __init__
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\state.py", line 445, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\state.py", line 442, in _initialize_instance
+    return manager.original_init(*mixed[1:], **kwargs)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\decl_base.py", line 1142, in _declarative_constructor
+    raise TypeError(
+TypeError: 'seeking_talent' is an invalid keyword argument for Venue
+2021-06-23 11:57:09,185 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:638]
+2021-06-23 11:57:18,964 ERROR: Exception on /venues/create [POST] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 340, in create_venue_submission
+    newvenue = Venue(name=request.form['name'], city="Honey Creek", state="IA", genres=request.form.getlist('genres'), website_link=request.form['website_link'], seeking_talent=seek_talent)
+  File "<string>", line 4, in __init__
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\state.py", line 445, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\state.py", line 442, in _initialize_instance
+    return manager.original_init(*mixed[1:], **kwargs)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\decl_base.py", line 1142, in _declarative_constructor
+    raise TypeError(
+TypeError: 'seeking_talent' is an invalid keyword argument for Venue
+2021-06-23 11:57:46,886 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:638]
+2021-06-23 11:59:36,237 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:638]

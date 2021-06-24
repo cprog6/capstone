@@ -99,8 +99,11 @@ class Venue(db.Model):
     state = db.Column(db.String(120))
     address = db.Column(db.String(120))
     phone = db.Column(db.String(120))
+    genres = db.Column(db.String(250))
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
+    website_link = db.Column(db.String(120))
+    seeking_talent = db.Column(db.Boolean)
     #shows = db.relationship('shows', backref='venue', lazy=True)
 
     # TODO: implement any missing fields as a database migration using Flask-Migrate
@@ -237,7 +240,7 @@ def show_venue(venue_id):
     "city": "San Francisco",
     "state": "CA",
     "phone": "123-123-1234",
-    "website": "https://www.themusicalhop.com",
+    "website": "",
     "facebook_link": "https://www.facebook.com/TheMusicalHop",
     "seeking_talent": True,
     "seeking_description": "We are on the lookout for a local artist to play every two weeks. Please call us.",
@@ -325,17 +328,13 @@ def create_venue_form():
 @app.route('/venues/create', methods=['POST'])
 def create_venue_submission():
   # TODO: insert form data as a new Venue record in the db, instead
-  # TODO: modify data to be the data object returned from db insertion
+  # TODO: modify data # be the data object returned from db insertion
 
-  #id = db.Column(db.Integer, primary_key=True)
-  #name = db.Column(db.String)
-  #city = db.Column(db.String(120))
-  #state = db.Column(db.String(120))
-  #address = db.Column(db.String(120))
-  #phone = db.Column(db.String(120))
-  #image_link = db.Column(db.String(500))
-  #facebook_link = db.Column(db.String(120))
-  newvenue = Venue(name=request.form['name'], city="Honey Creek", state="IA")
+  seek_talent = False
+  if request.form.get('seeking_talent') == 'y':
+    seek_talent = True
+ 
+  newvenue = Venue(name=request.form['name'], city="Honey Creek", state="IA", genres=request.form.getlist('genres'), website_link=request.form['website_link'], seeking_talent=seek_talent)
   session.add(newvenue)
   session.commit()
 
