@@ -29,6 +29,8 @@ import os
 # TODO: connect to a local postgresql database
 app = Flask(__name__)
 
+app.debug = True
+
 app.config['SECRET_KEY'] = os.urandom(32)
 moment = Moment(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:Theoilers1#@localhost:5432/rickdb"
@@ -106,6 +108,8 @@ class Venue(db.Model):
     seeking_talent = db.Column(db.Boolean)
     #shows = db.relationship('shows', backref='venue', lazy=True)
 
+    
+
     # TODO: implement any missing fields as a database migration using Flask-Migrate
 
 class Artist(db.Model, ModelMixin):
@@ -135,6 +139,7 @@ class Shows(db.Model):
 
     # TODO: implement any missing fields, as a database migration using Flask-Migrate
 
+db.create_all()
 # TODO Implement Show and Artist models, and complete all model relationships and properties, as a database migration.
 
 #----------------------------------------------------------------------------#
@@ -198,6 +203,7 @@ def venues():
   for result in rv:
     json_data.append(result[0])
   
+  app.logger.warning("warning....rick {}".format(json_data))
   return render_template('pages/venues.html', areas=json_data);
 
 @app.route('/venues/search', methods=['POST'])
@@ -346,18 +352,22 @@ def create_venue_submission():
   # see: http://flask.pocoo.org/docs/1.0/patterns/flashing/
   return render_template('pages/home.html')
 
-@app.route('/venues/<venue_id>', methods=['DELETE'])
+@app.route('/venues/<int:venue_id>/delete', methods=['GET'])
 def delete_venue(venue_id):
   # TODO: Complete this endpoint for taking a venue_id, and using
-  # SQLAlchemy ORM to delete a record. Handle cases where the session commit could fail.
-
-  #removevenue = Venue(name=request.form['name'], city="Honey Creek", state="IA")
-  #session.delete(newvenue)
-  #session.commit()
+    # SQLAlchemy ORM to d
+  
+  print("Delete venue function: ")
+  removevenue = Venue.query.get(4)
+  session.delete(removevenue)
+  session.commit()
 
   # BONUS CHALLENGE: Implement a button to delete a Venue on a Venue Page, have it so that
   # clicking that button delete it from the db then redirect the user to the homepage
-  return None
+  # on successful db insert, flash success
+  flash('Venue ' + venue_id + ' was successfully deleted!')
+
+  return render_template('pages/home.html')
 
 #  Artists
 #  ----------------------------------------------------------------
