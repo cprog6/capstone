@@ -4023,3 +4023,227 @@ Traceback (most recent call last):
 TypeError: 'seeking_talent' is an invalid keyword argument for Venue
 2021-06-23 11:57:46,886 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:638]
 2021-06-23 11:59:36,237 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:638]
+2021-06-24 23:12:23,624 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:635]
+2021-06-24 23:13:33,902 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:635]
+2021-06-24 23:18:10,747 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:635]
+2021-06-24 23:20:06,222 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:635]
+2021-06-24 23:21:09,052 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:636]
+2021-06-24 23:22:26,878 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:636]
+2021-06-24 23:37:40,032 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:636]
+2021-06-24 23:39:02,808 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:636]
+2021-06-24 23:39:52,351 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:636]
+2021-06-24 23:39:54,345 ERROR: Exception on /venues/4/delete [GET] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 356, in delete_venue
+    session.delete(removevenue)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 2599, in delete
+    self._delete_impl(state, instance, head=True)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 2611, in _delete_impl
+    to_attach = self._before_attach(state, obj)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 3203, in _before_attach
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Object '<Venue at 0x1922e92e6d0>' is already attached to session '2' (this is '1')
+2021-06-24 23:40:29,896 ERROR: Exception on /venues/4/delete [GET] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 356, in delete_venue
+    session.delete(removevenue)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 2599, in delete
+    self._delete_impl(state, instance, head=True)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 2611, in _delete_impl
+    to_attach = self._before_attach(state, obj)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 3203, in _before_attach
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Object '<Venue at 0x1922e9eae20>' is already attached to session '3' (this is '1')
+2021-06-24 23:40:43,599 ERROR: Exception on /venues/4/delete [GET] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 356, in delete_venue
+    session.delete(removevenue)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 2599, in delete
+    self._delete_impl(state, instance, head=True)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 2611, in _delete_impl
+    to_attach = self._before_attach(state, obj)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 3203, in _before_attach
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Object '<Venue at 0x1922e9ea850>' is already attached to session '4' (this is '1')
+2021-06-24 23:41:04,128 ERROR: Exception on /venues/4/delete [GET] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 356, in delete_venue
+    session.delete(removevenue)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 2599, in delete
+    self._delete_impl(state, instance, head=True)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 2611, in _delete_impl
+    to_attach = self._before_attach(state, obj)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 3203, in _before_attach
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Object '<Venue at 0x1922eaa8c10>' is already attached to session '5' (this is '1')
+2021-06-24 23:44:24,218 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:636]
+2021-06-24 23:44:33,062 ERROR: Exception on /venues/4/delete [GET] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 356, in delete_venue
+    session.delete(removevenue)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 2599, in delete
+    self._delete_impl(state, instance, head=True)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 2611, in _delete_impl
+    to_attach = self._before_attach(state, obj)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 3203, in _before_attach
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Object '<Venue at 0x229d6eee160>' is already attached to session '2' (this is '1')
+2021-06-25 07:31:29,911 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:636]
+2021-06-25 08:06:15,061 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:642]
+2021-06-25 08:06:53,352 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:642]
+2021-06-25 08:07:40,776 ERROR: Exception on /venues [GET] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 197, in venues
+    cur.execute("SELECT json_build_object('city', v2.city, 'state', v2.state, 'venues', json_agg(Vens)) FROM venue v2 LEFT JOIN (SELECT v.id id, v.name, coalesce(COUNT(s.id), 0) upcoming FROM venue v LEFT JOIN shows s ON v.id = s.venue_id GROUP by v.id, v.name) as Vens on v2.id = Vens.id GROUP BY v2.city, v2.state")
+psycopg2.errors.UndefinedTable: relation "venue" does not exist
+LINE 1: ...'state', v2.state, 'venues', json_agg(Vens)) FROM venue v2 L...
+                                                             ^
+
+2021-06-25 08:08:14,453 ERROR: Exception on /venues [GET] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 197, in venues
+    cur.execute("SELECT json_build_object('city', v2.city, 'state', v2.state, 'venues', json_agg(Vens)) FROM venue v2 LEFT JOIN (SELECT v.id id, v.name, coalesce(COUNT(s.id), 0) upcoming FROM venue v LEFT JOIN shows s ON v.id = s.venue_id GROUP by v.id, v.name) as Vens on v2.id = Vens.id GROUP BY v2.city, v2.state")
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+2021-06-25 08:08:29,811 ERROR: Exception on /venues/create [POST] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\base.py", line 1770, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "venue" does not exist
+LINE 1: INSERT INTO venue (name, city, state, address, phone, genres...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 342, in create_venue_submission
+    session.commit()
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 829, in commit
+    self._prepare_impl()
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 3286, in flush
+    self._flush(objects)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 3426, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\session.py", line 3386, in _flush
+    flush_context.execute()
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\persistence.py", line 242, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\orm\persistence.py", line 1219, in _emit_insert_statements
+    result = connection._execute_20(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\base.py", line 1582, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\sql\elements.py", line 324, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\base.py", line 1451, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\base.py", line 1813, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\base.py", line 1994, in _handle_dbapi_exception
+    util.raise_(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\base.py", line 1770, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\T470\AppData\Roaming\Python\Python39\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "venue" does not exist
+LINE 1: INSERT INTO venue (name, city, state, address, phone, genres...
+                    ^
+
+[SQL: INSERT INTO venue (name, city, state, address, phone, genres, image_link, facebook_link, website_link, seeking_talent) VALUES (%(name)s, %(city)s, %(state)s, %(address)s, %(phone)s, %(genres)s, %(image_link)s, %(facebook_link)s, %(website_link)s, %(seeking_talent)s) RETURNING venue.id]
+[parameters: {'name': 'Richard Snyder', 'city': 'Honey Creek', 'state': 'IA', 'address': None, 'phone': None, 'genres': ['Classical'], 'image_link': None, 'facebook_link': None, 'website_link': '', 'seeking_talent': True}]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-06-25 08:08:50,028 ERROR: Exception on /venues [GET] [in C:\Python39\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "C:\Python39\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Python39\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py", line 197, in venues
+    cur.execute("SELECT json_build_object('city', v2.city, 'state', v2.state, 'venues', json_agg(Vens)) FROM venue v2 LEFT JOIN (SELECT v.id id, v.name, coalesce(COUNT(s.id), 0) upcoming FROM venue v LEFT JOIN shows s ON v.id = s.venue_id GROUP by v.id, v.name) as Vens on v2.id = Vens.id GROUP BY v2.city, v2.state")
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+2021-06-25 08:08:58,581 INFO: errors [in C:\Users\T470\OneDrive\Documents\Tech\PythonApps\FSND\projects\01_fyyur\starter_code\app.py:642]
