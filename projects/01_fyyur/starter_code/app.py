@@ -334,7 +334,7 @@ def show_venue(venue_id):
   }
   
   #data = list(filter(lambda d: d['id'] == venue_id, [data1, data2, data3]))[0]
-  sql_stmt = "SELECT json_build_object('id', v2.id, 'name', v2.name, 'genres', v2.genres, 'address', v2.address, 'city', v2.city, 'state', v2.state, 'phone', v2.phone, 'website', v2.website, 'facebook_link', v2.facebook_link, 'seeking_talent', v2.seeking_talent, 'image_link', v2.image_link) FROM venue v2 WHERE v2.id = %s"
+  sql_stmt = "SELECT json_build_object('id', v2.id, 'name', v2.name, 'genres', v2.genres, 'address', v2.address, 'city', v2.city, 'state', v2.state, 'phone', v2.phone, 'website', v2.website, 'facebook_link', v2.facebook_link, 'seeking_talent', v2.seeking_talent, 'seeking_description', v2.seeking_description, 'image_link', v2.image_link) FROM venue v2 WHERE v2.id = %s"
 
   cur.execute(sql_stmt, (venue_id,))
   rv = cur.fetchall()
