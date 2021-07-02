@@ -2,166 +2,22 @@
 #----------------------------------------------------------------------------#
 # Imports
 #----------------------------------------------------------------------------#
-import json
-import dateutil.parser
-import babel
-from flask import Flask, render_template, request, Response, flash, redirect, url_for
-from flask_moment import Moment
-from flask_sqlalchemy import SQLAlchemy
-import logging
+import json, logging
 from logging import Formatter, FileHandler
-from flask_wtf import Form
-from forms import *
-
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine
-from sqlalchemy import select, func
-from sqlalchemy.orm import relationship
-
-import decimal, datetime
-#from datetime import datetime
-from flask.json import JSONEncoder
 from contextlib import suppress
-import psycopg2
-from psycopg2 import sql
 import os
 
-#----------------------------------------------------------------------------#
-# App Config.
-#----------------------------------------------------------------------------#
+import dateutil.parser
+import babel
+from babel.dates import format_date, format_datetime, format_time
 
-# TODO: connect to a local postgresql database
-app = Flask(__name__)
+from flask import Flask, jsonify, render_template, request, Response, flash, redirect, url_for
 
-app.debug = True
+from sqlalchemy import select, func
+import datetime,decimal
 
-app.config['SECRET_KEY'] = os.urandom(32)
-moment = Moment(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:Theoilers1#@localhost:5432/rickdb"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
-
-#app.config.from_object('config.DevelopmentConfig')
-db = SQLAlchemy(app)
-
-engine = create_engine('postgresql://postgres:Theoilers1#@localhost:5432/rickdb')
-
-Session = sessionmaker(engine)
-session = Session()
-
-conn2 = psycopg2.connect("dbname=rickdb user=postgres password=Theoilers1#")
-cur = conn2.cursor()
-
-#----------------------------------------------------------------------------#
-# Models.
-#----------------------------------------------------------------------------#
-from sqlalchemy.inspection import inspect
-
-class ModelMixin:
-    """Provide dict-like interface to db.Model subclasses."""
-
-    def __getitem__(self, key):
-        """Expose object attributes like dict values."""
-        return getattr(self, key)
-
-    def keys(self):
-        """Identify what db columns we have."""
-        return inspect(self).attrs.keys()
-
-def to_json(inst, cls):
-    """
-    Jsonify the sql alchemy query result.
-    """
-    convert = dict()
-    # add your coversions for things like datetime's 
-    # and what-not that aren't serializable.
-    d = dict()
-    for c in cls.__table__.columns:
-        v = getattr(inst, c.name)
-        if c.type in convert.keys() and v is not None:
-            try:
-                d[c.name] = convert[c.type](v)
-            except:
-                d[c.name] = "Error:  Failed to covert using ", str(convert[c.type])
-        elif v is None:
-            d[c.name] = str()
-        else:
-            d[c.name] = v
-    return json.dumps(d)
-
-class MyJSONEncoder(JSONEncoder):
-    def default(self, obj):
-        # Optional: convert datetime objects to ISO format
-        with suppress(AttributeError):
-            return obj.isoformat()
-        return dict(obj)
-
-app.json_encoder = MyJSONEncoder
-
-class Venue(db.Model):
-    __tablename__ = 'venue'
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    city = db.Column(db.String(120))
-    state = db.Column(db.String(120))
-    address = db.Column(db.String(120))
-    phone = db.Column(db.String(120))
-    genres = db.Column(db.String(250))
-    image_link = db.Column(db.String(500))
-    facebook_link = db.Column(db.String(120))
-    website = db.Column(db.String(120))
-    seeking_talent = db.Column(db.Boolean)
-    seeking_description = db.Column(db.String(500))
-    shows = db.relationship("Shows", back_populates="venue")
-
-    @property
-    def json(self):
-        return to_json(self, self.__class__)
-    
-
-    # TODO: implement any missing fields as a database migration using Flask-Migrate
-
-class Artist(db.Model, ModelMixin):
-    __tablename__ = 'artist'
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    city = db.Column(db.String(120))
-    state = db.Column(db.String(120))
-    phone = db.Column(db.String(120))
-    genres = db.Column(db.String(120))
-    image_link = db.Column(db.String(500))
-    facebook_link = db.Column(db.String(120))
-    website = db.Column(db.String(120))
-    seeking_venue = db.Column(db.Boolean)
-    seeking_description = db.Column(db.String(500))
-    shows = db.relationship("Shows", back_populates="artist")
-
-    @property
-    def json(self):
-        return to_json(self, self.__class__)
-
-class Shows(db.Model):
-    __tablename__ = 'shows'
-
-    id = db.Column(db.Integer, primary_key=True)
-    start_time = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)
-    venue_id = db.Column(db.Integer, db.ForeignKey('venue.id'), index=True)
-    artist_id = db.Column(db.Integer, db.ForeignKey('artist.id'), index=True)
-    venue = db.relationship("Venue", back_populates="shows")
-    artist = db.relationship("Artist", back_populates="shows")
-
-    @property
-    def json(self):
-        return to_json(self, self.__class__)
-#    one_thing = sa.orm.relationship(OneThing, backref=sa.orm.backref('other_thing', uselist=False))
-
-
-    # TODO: implement any missing fields, as a database migration using Flask-Migrate
-
-db.create_all()
-# TODO Implement Show and Artist models, and complete all model relationships and properties, as a database migration.
-
+from starter_code import app
+from starter_code.models import db, cur, session, Venue, Artist, Shows
 #----------------------------------------------------------------------------#
 # Filters.
 #----------------------------------------------------------------------------#
@@ -183,7 +39,6 @@ app.jinja_env.filters['datetime'] = format_datetime
 @app.route('/')
 def index():
   return render_template('pages/home.html')
-
 
 #  Venues
 #  ----------------------------------------------------------------
@@ -213,6 +68,12 @@ def venues():
       "num_upcoming_shows": 0,
     }]
   }]
+
+
+##for v in session.query(enue.id, Venue.name,).join(Shows).all():
+ # for r in session.query(Venue.city, Venue.state, Venue.id, Venue.name#, func.coalesce(sub_q.c.num_upcoming_shows,0).label('num_upcoming_shows')).outerjoin(sub_q, Venue.id==sub_q.c.venue_id):
+  #  v_dic = to_json(v,Shows)
+#    app.logger.warning(r._asdict())
 
   cur.execute("SELECT json_build_object('city', v2.city, 'state', v2.state, 'venues', json_agg(Vens)) FROM venue v2 LEFT JOIN (SELECT v.id id, v.name, coalesce(COUNT(s.id), 0) upcoming FROM venue v LEFT JOIN shows s ON v.id = s.venue_id GROUP by v.id, v.name) as Vens on v2.id = Vens.id GROUP BY v2.city, v2.state")
   
@@ -673,6 +534,8 @@ def create_artist_submission():
   )
   session.add(newartist)
   session.commit()
+
+  app.logger.warning("Artist name: {} ".format(newartist.name))
 
   # on successful db insert, flash success
   flash('Artist ' + request.form['name'] + ' was successfully listed!')
