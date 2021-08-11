@@ -10,6 +10,7 @@
 This project depends on Nodejs and Node Package Manager (NPM). Before continuing, you must download and install Node (the download includes NPM) from [https://nodejs.com/en/download](https://nodejs.org/en/download/).
 
 2. **Installing project dependencies**<br>
+>>> RICK will be slow to install, like 5 minutes; Also ran 'npm audit fix' to address vulnerabilities; Ran 'npm update -g <package name>' to update a few packages globally, like - Chokidar, fservents, mkdirp
 This project uses NPM to manage software dependencies. NPM Relies on the package.json file located in the `frontend` directory of this repository. After cloning, open your terminal and run:
 ```bash
 npm install
@@ -22,11 +23,11 @@ npm install
 
 The frontend app was built using create-react-app. In order to run the app in development mode use ```npm start```. You can change the script in the ```package.json``` file. 
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make 
 
 ```bash
 npm start
-```
+```edits.<br>
 
 ### Request Formatting
 
