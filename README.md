@@ -27,7 +27,7 @@ Getting Started
                 'dropdb capstone_test'
                 'createdb capstone_test'
                 'psql capstone_test < capstone.psql'
-                'python test_flaskr.py'
+                'python test_app.py'
 
             The first time you run the test, omit the dropdb command.
 
@@ -54,9 +54,9 @@ API Reference
             422: Not Processable
 
 Endpoints
-    GET  /drivers
-        General:
-            Returns a list of driver objects, success value, and all of the names given in the table.
+GET /drivers
+General:
+Returns a list of driver objects, success value, and all of the names given in the table.
 
             Sample: 'curl http://127.0.0.1:5000/drivers'
                 "driver_list": [
@@ -145,6 +145,6 @@ Endpoints
 Deployment N/A
 
 Authors
-    Trey Snyder
+Trey Snyder
 
 Acknowledgements

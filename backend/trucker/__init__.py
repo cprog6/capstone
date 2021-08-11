@@ -125,7 +125,7 @@ def create_app(test_config=None):
   #DELETE TRUCK
   @app.route('/trucks/<int:truck_id>/', methods=['DELETE'])
   @requires_auth('delete:trucks')
-  def delete_trucks(truck_id, f):
+  def delete_trucks(f, truck_id):
 
     truck = Truck.query.filter(Truck.id == truck_id).one_or_none()
     if truck is None:
@@ -143,10 +143,11 @@ def create_app(test_config=None):
   
   #DELETE DRIVER
   @app.route('/drivers/<int:driver_id>/', methods=['DELETE'])
-  @requires_auth('delete:drivers')
-  def delete_driver(driver_id, f):
+  #@requires_auth('delete:drivers')
+  def delete_driver(driver_id):
 
     driver = Driver.query.filter(Driver.id == driver_id).one_or_none()
+    print("driver: {}".format(driver.name))
     if driver is None:
       abort(404)
 
@@ -154,6 +155,7 @@ def create_app(test_config=None):
       driver.delete()
       
       return jsonify({
+
         'success': True,
 
       })
@@ -165,7 +167,8 @@ def create_app(test_config=None):
   #UPDATE A TRUCK RECORD
   @app.route('/trucks/<int:truck_id>/', methods=['PATCH'])
   @requires_auth('patch:trucks')
-  def update_truck(truck_id, f):
+  def update_truck(f, truck_id):
+    print("truck update: ")
     body = request.get_json()
 
     try:
@@ -198,9 +201,9 @@ def create_app(test_config=None):
       abort(400)
   
   #UPDATE A DRIVER RECORD
-  @app.route('/drivers/<int:driver_id>/', methods=['PATCH'])
+  @app.route('/drivers/<int:driver_id>', methods=['PATCH'])
   @requires_auth('patch:drivers')
-  def update_driver(driver_id, f):
+  def update_driver(f, driver_id):
     body = request.get_json()
 
     try:
