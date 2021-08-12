@@ -52,7 +52,7 @@ class CapstoneTestCase(unittest.TestCase):
     Write at least one test for each test for successful operation and for expected errors.
     """
 
-    '''
+    
 #! successful get of all drivers
     def test_get_all_drivers_with_results(self):
         res = self.client().get('/drivers', headers=driver_headers)
@@ -213,7 +213,7 @@ class CapstoneTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 400)
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'bad request')
-    '''
+    
 #! successful update for truck model
     def test_update_truck_model(self):
         res = self.client().patch('/trucks/1/', json={'model': 'Titan 2500'}, headers=admin_headers)
@@ -223,7 +223,7 @@ class CapstoneTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
         self.assertEqual(truck.format()['model'], 'Titan 2500')
-    '''
+    
 #! fail update for truck model
     def test_400_for_failed_update(self):
         res = self.client().patch('/trucks/1000', headers=admin_headers)
@@ -242,7 +242,7 @@ class CapstoneTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
         self.assertEqual(driver.format()['name'], 'Bob')
-    '''
+    
 # Make the tests conveniently executable
 if __name__ == "__main__":
     unittest.main()
