@@ -142,9 +142,13 @@ Returns a list of driver objects, success value, and all of the names given in t
                 "success": true
             }
 
+Authorization
+    The Auth0 JWT includes claims for permissions based on the user's role within the Auth0 system. This project makes use of these claims using the decorator @requires_auth() method which checks if particular permissions exist within the JWT permissions claim of the currently logged in user.
+
 Deployment N/A
 
 Authors
 Trey Snyder
 
-Acknowledgements
+Motivation
+    

@@ -4,12 +4,12 @@ from models import setup_db, Driver, Truck
 from .auth.auth import AuthError, requires_auth
 
 def create_app(test_config=None):
-  # create and configure the app
+# create and configure the app
   app = Flask(__name__)
   setup_db(app)
   CORS(app)
 
-  #GET ALL DRIVERS
+# GET ALL DRIVERS
   @app.route('/drivers', methods=['GET'])
   @requires_auth('get:drivers')
   def get_drivers(f):
@@ -26,7 +26,7 @@ def create_app(test_config=None):
       'name_list': name_list
       })
   
-  #GET ALL TRUCKS
+# GET ALL TRUCKS
   @app.route('/trucks', methods=['GET'])
   @requires_auth('get:trucks')
   def get_trucks(f):
@@ -39,7 +39,7 @@ def create_app(test_config=None):
       })
 
   
-  #CREATE OR SEARCH FOR DRIVERS
+# CREATE OR SEARCH FOR DRIVERS
   @app.route('/drivers/', methods=['POST'])
   @requires_auth('post:drivers')
   def create_or_search_drivers(f):
@@ -80,7 +80,7 @@ def create_app(test_config=None):
       app.logger.warning(e)
       abort(422)
   
-  #CREATE OR SEARCH FOR TRUCKS
+# CREATE OR SEARCH FOR TRUCKS
   @app.route('/trucks/', methods=['POST'])
   @requires_auth('post:trucks')
   def create_or_search_trucks(f):
@@ -122,7 +122,7 @@ def create_app(test_config=None):
       app.logger.warning(e)
       abort(422)
   
-  #DELETE TRUCK
+# DELETE TRUCK
   @app.route('/trucks/<int:truck_id>/', methods=['DELETE'])
   @requires_auth('delete:trucks')
   def delete_trucks(f, truck_id):
@@ -141,7 +141,7 @@ def create_app(test_config=None):
     except:
       abort(422)
   
-  #DELETE DRIVER
+# DELETE DRIVER
   @app.route('/drivers/<int:driver_id>/', methods=['DELETE'])
   #@requires_auth('delete:drivers')
   def delete_driver(driver_id):
@@ -164,7 +164,7 @@ def create_app(test_config=None):
       abort(422)
 
   
-  #UPDATE A TRUCK RECORD
+# UPDATE A TRUCK RECORD
   @app.route('/trucks/<int:truck_id>/', methods=['PATCH'])
   @requires_auth('patch:trucks')
   def update_truck(f, truck_id):

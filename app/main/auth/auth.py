@@ -91,7 +91,7 @@ def check_permissions(permission, payload):
                 {
                     'code': 'invalid_permissions',
                     'description': 'User does not have enough privileges'
-                }, 403  )
+                }, 403)
         else:
             return True
     else:
