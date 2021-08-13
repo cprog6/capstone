@@ -1,6 +1,6 @@
 from flask import Flask, json, request, abort, jsonify
 from flask_cors import CORS
-from models import setup_db, Driver, Truck
+from .models import setup_db, Driver, Truck
 from .auth.auth import AuthError, requires_auth
 
 # create and configure the app
