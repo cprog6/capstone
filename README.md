@@ -145,10 +145,22 @@ Returns a list of driver objects, success value, and all of the names given in t
 Authorization
     The Auth0 JWT includes claims for permissions based on the user's role within the Auth0 system. This project makes use of these claims using the decorator @requires_auth() method which checks if particular permissions exist within the JWT permissions claim of the currently logged in user.
 
-Deployment N/A
+Deployment locally
+    From 'app' directory, run the following commands
+
+        export FLASK_APP=app
+        export FLASK_DEBUG=true
+        pip install -r requirements.txt
+        flask run
+
+Testing
+    Import the postman collection to test the endpoints in productions on the heroku platform
+    https://shrouded-garden-71376.herokuapp.com
 
 Authors
 Trey Snyder
 
 Motivation
-    
+    1. A company wants me to help them build a web and mobile application to track their trucks and drivers.
+    2. Able to build a cross channel application
+    3. Continuous learning of programming and development

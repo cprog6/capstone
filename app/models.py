@@ -1,13 +1,15 @@
-from sqlalchemy import Column, String, Integer, create_engine, Table, ForeignKey
+from sqlalchemy import Column, String, Integer
 from flask_sqlalchemy import SQLAlchemy
 
 database_name = "capstone"
 database_name = "capstone_test"
-database_path = "postgresql://postgres:postgres@{}/{}".format('localhost:5432', database_name)
+database_path = "postgresql://postgres:postgres@{}/{}".format(
+                'localhost:5432', database_name)
 
 database_name = "d7o9nhn3jke4o7"
-database_path = "postgresql://zzlikznvjtlfzh:a37c4c340c6e726a60aac71e67b05c3c1f879c2f60e978157b8cbf223807b3e7@{}/{}".format('ec2-3-218-149-60.compute-1.amazonaws.com:5432', database_name)
-
+database_path = "postgresql://zzlikznvjtlfzh: \
+    a37c4c340c6e726a60aac71e67b05c3c1f879c2f60e978157b8cbf223807b3e7@{}/{}" \
+    .format('ec2-3-218-149-60.compute-1.amazonaws.com:5432', database_name)
 
 db = SQLAlchemy()
 
@@ -15,6 +17,8 @@ db = SQLAlchemy()
 setup_db(app)
     binds a flask application and a SQLAlchemy service
 '''
+
+
 def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -26,6 +30,8 @@ def setup_db(app, database_path=database_path):
 '''
 Trucks
 '''
+
+
 class Truck(db.Model):
     __tablename__ = 'truck'
 
@@ -46,7 +52,7 @@ class Truck(db.Model):
     def insert(self):
         db.session.add(self)
         db.session.commit()
-  
+
     def update(self):
         db.session.commit()
 
@@ -67,6 +73,8 @@ class Truck(db.Model):
 '''
 Driver
 '''
+
+
 class Driver(db.Model):
     __tablename__ = 'driver'
 

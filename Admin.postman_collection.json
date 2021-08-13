@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "5a4f61dd-60e6-4ab6-9bdd-d2af902b4ec2",
+		"name": "Admin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all drivers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://shrouded-garden-71376.herokuapp.com/drivers",
+					"protocol": "https",
+					"host": [
+						"shrouded-garden-71376",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"drivers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all trucks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://shrouded-garden-71376.herokuapp.com/trucks",
+					"protocol": "https",
+					"host": [
+						"shrouded-garden-71376",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"trucks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new driver",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Jack\",\r\n    \"age\" : \"80\",\r\n    \"gender\" : \"Male\",\r\n    \"truck_id\" : \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shrouded-garden-71376.herokuapp.com/drivers/",
+					"protocol": "https",
+					"host": [
+						"shrouded-garden-71376",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"drivers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new truck",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"year\" : \"2025\",\r\n    \"model\" : \"Ram 3500\",\r\n    \"color\" : \"Red\",\r\n    \"haul_capacity\" : \"20000\",\r\n    \"driver_id\" : \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shrouded-garden-71376.herokuapp.com/trucks/",
+					"protocol": "https",
+					"host": [
+						"shrouded-garden-71376",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"trucks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search for driver",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"searchTerm\" : \"Jack\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shrouded-garden-71376.herokuapp.com/drivers/",
+					"protocol": "https",
+					"host": [
+						"shrouded-garden-71376",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"drivers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search for truck",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"searchTerm\" : \"White\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shrouded-garden-71376.herokuapp.com/trucks/",
+					"protocol": "https",
+					"host": [
+						"shrouded-garden-71376",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"trucks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a truck",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shrouded-garden-71376.herokuapp.com/trucks/11/",
+					"protocol": "https",
+					"host": [
+						"shrouded-garden-71376",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"trucks",
+						"11",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a driver",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shrouded-garden-71376.herokuapp.com/drivers/11/",
+					"protocol": "https",
+					"host": [
+						"shrouded-garden-71376",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"drivers",
+						"11",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update truck",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"year\" : \"1970\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shrouded-garden-71376.herokuapp.com/trucks/1/",
+					"protocol": "https",
+					"host": [
+						"shrouded-garden-71376",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"trucks",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update driver",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Billy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shrouded-garden-71376.herokuapp.com/drivers/1/",
+					"protocol": "https",
+					"host": [
+						"shrouded-garden-71376",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"drivers",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik02UkxhZmVRejNXSTlTX2YzbEJSWiJ9.eyJpc3MiOiJodHRwczovL2Rldi16bjM5cDE2ei51cy5hdXRoMC5jb20vIiwic3ViIjoiZ2hZclJ4Q1BMWG1HVW15c3dIY1k3OFd6aTdHOG1NaTJAY2xpZW50cyIsImF1ZCI6InRydWNrdHJhY2tlciIsImlhdCI6MTYyODgxNTc0MywiZXhwIjoxNjI4OTAyMTQzLCJhenAiOiJnaFlyUnhDUExYbUdVbXlzd0hjWTc4V3ppN0c4bU1pMiIsInNjb3BlIjoiZ2V0OnRydWNrcyBnZXQ6ZHJpdmVycyBwb3N0OmRyaXZlcnMgcG9zdDp0cnVja3MgZGVsZXRlOmRyaXZlcnMgZGVsZXRlOnRydWNrcyBwYXRjaDpkcml2ZXJzIHBhdGNoOnRydWNrcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsInBlcm1pc3Npb25zIjpbImdldDp0cnVja3MiLCJnZXQ6ZHJpdmVycyIsInBvc3Q6ZHJpdmVycyIsInBvc3Q6dHJ1Y2tzIiwiZGVsZXRlOmRyaXZlcnMiLCJkZWxldGU6dHJ1Y2tzIiwicGF0Y2g6ZHJpdmVycyIsInBhdGNoOnRydWNrcyJdfQ.r_uFnPYxxKn3GD2uuMTQBwDNTcOy2wiCNvo17GkCLZLYv0eFq0I6SEMbPcCf5DvsAh_PxrcClQGv2GGACxeppYbjij-TEM8wrH5W7x3sbvLJvYH7PP1RcMSTn_lMvhxvagJcoU4w80zfGj_Y-t8iDP0BcKduBbAcB79v6fdzoiOLsyw38tXYTbNCoxNvcAWWSWKy6idn2dssG_tXI78TaIcxhQyrX1bCJP8pZZzAV69HYsKp05zl396fW0A3O84KsTNNjdhm_by8Tq8LuBgI8M9xkzlx51Z27ZZ1RSQxWcuHYKJDqyu7CVIf2_Tr4MSds_1cOJ1DoRCnVsaSTv49mA",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

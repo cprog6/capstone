@@ -199,7 +199,7 @@ def requires_auth(permission=''):
             try:
                 check_permissions(permission, payload)
             except:
-                foo=0
+                foo = 0
             return f(payload, *args, **kwargs)
 
         return wrapper
