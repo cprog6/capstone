@@ -5,6 +5,10 @@ database_name = "capstone"
 database_name = "capstone_test"
 database_path = "postgresql://postgres:postgres@{}/{}".format('localhost:5432', database_name)
 
+database_name = "d7o9nhn3jke4o7"
+database_path = "postgresql://zzlikznvjtlfzh:a37c4c340c6e726a60aac71e67b05c3c1f879c2f60e978157b8cbf223807b3e7@{}/{}".format('ec2-3-218-149-60.compute-1.amazonaws.com:5432', database_name)
+
+
 db = SQLAlchemy()
 
 '''
