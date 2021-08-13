@@ -1,12 +1,11 @@
 import unittest
+import os
 import json
 from flask_sqlalchemy import SQLAlchemy
 import logging
 
 from app import create_app
 from models import setup_db, Driver, Truck
-from tokens import driver_token, admin_token
-
 
 class CapstoneTestCase(unittest.TestCase):
     """This class represents the capstone test case"""
@@ -40,7 +39,7 @@ class CapstoneTestCase(unittest.TestCase):
 
 # successful get of all drivers
     def test_get_all_drivers_with_results(self):
-        res = self.client().get('/drivers', headers=driver_token())
+        res = self.client().get('/drivers', headers=os.environ.get('ADMIN'))
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -50,7 +49,7 @@ class CapstoneTestCase(unittest.TestCase):
 
 # fail of get all drivers
     def test_get_all_drivers_without_results(self):
-        res = self.client().get('/name', headers=admin_token())
+        res = self.client().get('/name', headers=os.environ.get('ADMIN'))
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
@@ -61,7 +60,7 @@ class CapstoneTestCase(unittest.TestCase):
 
 # successful get of all trucks
     def test_get_all_questions_with_results(self):
-        res = self.client().get('/trucks', headers=admin_token())
+        res = self.client().get('/trucks', headers=os.environ.get('ADMIN'))
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -71,7 +70,7 @@ class CapstoneTestCase(unittest.TestCase):
 
 # fail get of all trucks
     def test_get_all_trucks_without_results(self):
-        res = self.client().get('/models', headers=admin_token())
+        res = self.client().get('/models', headers=os.environ.get('ADMIN'))
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
@@ -82,7 +81,7 @@ class CapstoneTestCase(unittest.TestCase):
     '''
 #! successful delete of a driver
     def test_delete_driver_with_results(self):
-        res = self.client().delete('/drivers/4/', headers=admin_token())
+        res = self.client().delete('/drivers/4/', headers=os.environ.get('ADMIN'))
 
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
@@ -91,7 +90,7 @@ class CapstoneTestCase(unittest.TestCase):
 
 # failed delete of a driver
     def test_delete_driver_without_results(self):
-        res = self.client().delete('/drivers/2000/', headers=admin_token())
+        res = self.client().delete('/drivers/2000/', os.environ.get('ADMIN'))
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
@@ -102,7 +101,7 @@ class CapstoneTestCase(unittest.TestCase):
     '''
 #! successful delete of a truck
     def test_delete_truck_with_results(self):
-        res = self.client().delete('/trucks/5/', headers=admin_token())
+        res = self.client().delete('/trucks/5/', headers=os.environ.get('ADMIN'))
 
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
@@ -111,7 +110,7 @@ class CapstoneTestCase(unittest.TestCase):
 
 # failed delete of a truck
     def test_delete_truck_without_results(self):
-        res = self.client().delete('/trucks/2000/', headers=admin_token())
+        res = self.client().delete('/trucks/2000/', headers=os.environ.get('ADMIN'))
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
@@ -128,7 +127,7 @@ class CapstoneTestCase(unittest.TestCase):
             'gender': 'Male',
             'truck_id': 1
             },
-            headers=admin_token()
+            headers=os.environ.get('ADMIN')
         )
         data = json.loads(res.data)
 
@@ -149,7 +148,7 @@ class CapstoneTestCase(unittest.TestCase):
                 'haul_capacity': 18000,
                 'driver_id': 1
             },
-            headers=admin_token()
+            headers=os.environ.get('ADMIN')
         )
         data = json.loads(res.data)
 
@@ -164,7 +163,7 @@ class CapstoneTestCase(unittest.TestCase):
 # successful search for driver
     def test_get_driver_search_with_results(self):
         res = self.client().post(
-            '/drivers/', json={'searchTerm': 'Jack'}, headers=admin_token()
+            '/drivers/', json={'searchTerm': 'Jack'}, headers=os.environ.get('ADMIN')
         )
         data = json.loads(res.data)
 
@@ -175,7 +174,7 @@ class CapstoneTestCase(unittest.TestCase):
 # failed search for driver
     def test_get_driver_search_without_results(self):
         res = self.client().post(
-            '/drivers/', json={'searchTerm': 'fruit'}, headers=admin_token()
+            '/drivers/', json={'searchTerm': 'fruit'}, headers=os.environ.get('ADMIN')
         )
         data = json.loads(res.data)
 
@@ -186,7 +185,7 @@ class CapstoneTestCase(unittest.TestCase):
 # successful search for truck
     def test_get_truck_search_with_results(self):
         res = self.client().post(
-            '/trucks/', json={'searchTerm': 'Ram 2500'}, headers=admin_token()
+            '/trucks/', json={'searchTerm': 'Ram 2500'}, headers=os.environ.get('ADMIN')
         )
         data = json.loads(res.data)
 
@@ -198,7 +197,7 @@ class CapstoneTestCase(unittest.TestCase):
 # failed search for truck
     def test_get_truck_search_without_results(self):
         res = self.client().post(
-            '/trucks/', json={'searchTerm': 'Pink'}, headers=admin_token()
+            '/trucks/', json={'searchTerm': 'Pink'}, headers=os.environ.get('ADMIN')
         )
         data = json.loads(res.data)
 
@@ -209,7 +208,7 @@ class CapstoneTestCase(unittest.TestCase):
 # successful update for driver name
     def test_update_driver_name(self):
         res = self.client().patch(
-            '/drivers/4', json={'name': 'Bob'}, headers=admin_token()
+            '/drivers/4', json={'name': 'Bob'}, headers=os.environ.get('ADMIN')
         )
         data = json.loads(res.data)
         driver = Driver.query.filter(Driver.id == 4).one_or_none()
@@ -222,7 +221,7 @@ class CapstoneTestCase(unittest.TestCase):
     def test_update_driver_name_no_permissions(self):
         try:
             res = self.client().patch(
-                '/drivers/4', json={'name': 'Bob'}, headers=driver_token()
+                '/drivers/4', json={'name': 'Bob'}, headers=os.environ.get('DRIVER')
             )
             data = json.loads(res.data)
             driver = Driver.query.filter(Driver.id == 4).one_or_none()
@@ -237,7 +236,7 @@ class CapstoneTestCase(unittest.TestCase):
 
 # fail update for driver name
     def test_400_for_failed_driver_update(self):
-        res = self.client().patch('/drivers/1000', headers=admin_token())
+        res = self.client().patch('/drivers/1000', headers=os.environ.get('ADMIN'))
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 400)
@@ -249,7 +248,7 @@ class CapstoneTestCase(unittest.TestCase):
     def test_update_truck_model(self):
 
         res = self.client().patch(
-            '/trucks/1', json={'model': 'Titan 2500'}, headers=admin_token())
+            '/trucks/1', json={'model': 'Titan 2500'}, headers=os.environ.get('ADMIN'))
         data = json.loads(res.data)
         truck = Truck.query.filter(Truck.id == 1).one_or_none()
 
@@ -260,7 +259,7 @@ class CapstoneTestCase(unittest.TestCase):
 
 # fail update for truck model
     def test_400_for_failed_truck_update(self):
-        res = self.client().patch('/trucks/1000', headers=admin_token())
+        res = self.client().patch('/trucks/1000', headers=os.environ.get('ADMIN'))
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 400)
@@ -270,7 +269,7 @@ class CapstoneTestCase(unittest.TestCase):
 # fail update for driver name. due to authorization for driver role
     def test_update_driver_name(self):
         res = self.client().patch(
-            '/drivers/1', json={'name': 'Bob'}, headers=driver_token())
+            '/drivers/1', json={'name': 'Bob'}, headers=os.environ.get('DRIVER'))
         data = json.loads(res.data)
         driver = Driver.query.filter(Driver.id == 1).one_or_none()
 

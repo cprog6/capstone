@@ -13,31 +13,41 @@ CORS(app)
 @app.route('/drivers', methods=['GET'])
 @requires_auth('get:drivers')
 def get_drivers(f):
-    drivers = Driver.query.all()
-    formatted_drivers = [driver.format() for driver in drivers]
+    try:
+        drivers = Driver.query.all()
+        formatted_drivers = [driver.format() for driver in drivers]
 
-    name_list = []
-    for driver in drivers:
-        name_list.append(driver.name)
+        name_list = []
+        for driver in drivers:
+            name_list.append(driver.name)
 
-    return jsonify({
-      'success': True,
-      'driver_list': formatted_drivers,
-      'name_list': name_list
-      })
+            return jsonify({
+                'success': True,
+                'driver_list': formatted_drivers,
+                'name_list': name_list
+            })
+
+    except Exception as e:
+        app.logger.warning(e)
+        abort(422)
 
 
 # GET ALL TRUCKS
 @app.route('/trucks', methods=['GET'])
 @requires_auth('get:trucks')
 def get_trucks(f):
-    trucks = Truck.query.all()
-    formatted_trucks = [truck.format() for truck in trucks]
+    try:
+        trucks = Truck.query.all()
+        formatted_trucks = [truck.format() for truck in trucks]
 
-    return jsonify({
-      'success': True,
-      'truck_list': formatted_trucks,
-      })
+        return jsonify({
+            'success': True,
+            'truck_list': formatted_trucks,
+        })
+
+    except Exception as e:
+        app.logger.warning(e)
+        abort(422)
 
 
 # CREATE OR SEARCH FOR DRIVERS
@@ -110,17 +120,21 @@ def create_or_search_trucks(f):
                 haul_capacity=new_haul_capacity,
                 driver_id=new_driver_id
             )
+            try:
+                truck_record.insert()
 
-            truck_record.insert()
+                return jsonify({
+                'success': True,
+                'year': new_year,
+                'model': new_model,
+                'color': new_color,
+                'haul_capacity': new_haul_capacity,
+                'driver_id': new_driver_id
+                })
 
-            return jsonify({
-              'success': True,
-              'year': new_year,
-              'model': new_model,
-              'color': new_color,
-              'haul_capacity': new_haul_capacity,
-              'driver_id': new_driver_id
-            })
+            except Exception as e:
+                app.logger.warning(e)
+                abort(500)
 
         else:
             truck_list = Truck.query.filter(
@@ -272,3 +286,11 @@ def bad_request(error):
       "error": 400,
       "message": "bad request"
       }), 400
+
+@app.errorhandler(500)
+def bad_request(error):
+    return jsonify({
+      "success": False,
+      "error": 500,
+      "message": "an error has occured"
+      }), 500

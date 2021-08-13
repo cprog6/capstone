@@ -1,44 +1,28 @@
-Getting Started
+Backend
+    From the backend folder run 'pip install requirements.txt'. All of the requirements will be in the requirements.txt file
 
-    Pre-requisites and Local Development
-        Developers using this project should already have Python3, pip and node installed on their local machines.
+    To run the application run the following commands on the command line
+        'export FLASK_APP=app'
+        'export FLASK_DEBUG=true'
+        'source setup.sh'
+        'flask run'
 
-        Backend
-            From the backend folder run 'pip install requirements.txt'. All of the requirements will be in the requirements.txt file
+    The application is run on 'http://127.0.0.1:5000/' by default and is a proxy in the frontend configuration.
 
-            To run the application run the following commands on the command line
-                'export FLASK_APP=trucker'
-                'export FLASK_DEBUG=true'
-                'flask run'
+    Tests
+        In order to run tests navigate to the backend folder and run the following commands:
+            'dropdb capstone_test'
+            'createdb capstone_test'
+            'python test_app.py'
 
-            These commands put the application in development and directs our application to use the '__init__.py' file in our trucker folder. Using the debug mode, set it to true so it restarts the server whever changes are saved. If running locally on Windows, looks for the commands in the Flask documentation given to you.
-            http://flask.pocoo.org/docs/1.0/tutorial/factory/
+        The first time you run the test, omit the dropdb command.
 
-            The application is run on 'http://127.0.0.1:5000/' by default and is a proxy in the frontend configuration.
-
-        Frontend
-            From the frontend folder, run the following commands to start the client:
-                'npm install' // only once to install dependencies
-                'npm start'
-            By default, the frontend will run on localhost:3000.
-
-        Tests
-            In order to run tests navigate to the backend folder and run the following commands:
-                'dropdb capstone_test'
-                'createdb capstone_test'
-                'psql capstone_test < capstone.psql'
-                'python test_app.py'
-
-            The first time you run the test, omit the dropdb command.
-
-            All tests are kept in that file and should be maintained as updates are made to app functionality.
+        All tests are kept in that file and should be maintained as updates are made to app functionality.
 
 API Reference
 
     Getting Started
         Base URL: At present this app can only be run locally and is not hosted as a base URL. The backend app is hosted at the default, 'http://127.0.0.1:5000/', which is set as a proxy in the frontend configuration.
-
-        Authenication: This version of the application does not require authentication or API keys.
 
     Error Handling
         Errors are returned as JSON objects in the following format:
@@ -144,6 +128,27 @@ Returns a list of driver objects, success value, and all of the names given in t
 
 Authorization
     The Auth0 JWT includes claims for permissions based on the user's role within the Auth0 system. This project makes use of these claims using the decorator @requires_auth() method which checks if particular permissions exist within the JWT permissions claim of the currently logged in user.
+
+    RBAC - Role Based Access Control
+        
+        RBAC is controlled by third party authorization control service, Auth0.com.
+
+        Roles for this application with the following permissions:
+
+            Driver:
+                get:trucks
+                get:drivers
+
+            Admin:
+                get:trucks
+                get:drivers
+                post:trucks
+                post:drivers
+                delete:trucks
+                delete:drivers
+                patch:trucks
+                patch:drivers
+
 
 Deployment locally
     From 'app' directory, run the following commands
